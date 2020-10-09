@@ -1,0 +1,153 @@
+#:kivy 1.11.1
+
+User:
+    buttonSkrivut: buttonSkrivut
+    textSerienummer: textSerienummer
+    textModell: textModell
+    textPinkod: textPinkod
+    textAdress: textAdress
+    textNamn: textNamn
+    textEpost: textEpost
+    textTelefon: textTelefon
+    textAnnat: textAnnat
+    GridLayout:
+        cols: 2
+        rows: 9
+
+        Label:
+            id:labelSerienummer
+            size_hint_x: None
+            width: 100
+            text: 'Serienummer:'
+            multiline: False
+
+        TextInput:
+            id:textSerienummer
+            focus : True
+            text: ' '
+            width: 100
+            multiline: False
+            on_text_validate:
+                textModell.focus = True
+
+        Label:
+            id:labelModell
+            size_hint_x: None
+            width: 100
+            text: 'Modell:'
+            multiline: False
+
+        TextInput:
+            id:textModell
+            text: ' '
+            width: 100
+            multiline: False
+            on_text_validate:
+                textPinkod.focus = True
+
+        Label:
+            id:labelPinkod
+            size_hint_x: None
+            width: 100
+            text: 'Pinkod:'
+            multiline: False
+
+        TextInput:
+            id:textPinkod
+            text: ' '
+            width: 100
+            multiline: False
+            on_text_validate:
+                textNamn.focus = True
+
+        Label:
+            id:labelNamn
+            size_hint_x: None
+            width: 100
+            text: 'Namn:'
+            multiline: False
+
+        TextInput:
+            id:textNamn
+            text: ' '
+            width: 100
+            multiline: False
+            on_text_validate:
+                textAdress.focus = True
+
+        Label:
+            id:labelAdress
+            size_hint_x: None
+            width: 100
+            text: 'Adress:'
+            multiline: False
+
+        TextInput:
+            id:textAdress
+            text: ' '
+            width: 100
+            multiline: False
+            on_text_validate:
+                textTelefon.focus = True
+
+        Label:
+            id:labelTelefon
+            size_hint_x: None
+            width: 100
+            text: 'Telefon:'
+            multiline: False
+
+        TextInput:
+            id:textTelefon
+            text: ' '
+            width: 100
+            multiline: False
+            on_text_validate:
+                textEpost.focus = True
+
+        Label:
+            id:labelEpost
+            size_hint_x: None
+            width: 100
+            text: 'E-post:'
+            multiline: False
+
+        TextInput:
+            id:textEpost
+            text: ' '
+            width: 100
+            multiline: False
+            on_text_validate:
+                textAnnat.focus = True
+
+        Label:
+            id:labelAnnat
+            size_hint_x: None
+            width: 100
+            text: 'Arbete ut\u00f6ver \n service:'
+            multiline: True
+
+        TextInput:
+            id:textAnnat
+            text: ' '
+            width: 100
+            multiline: False
+            on_text_validate:
+                buttonSkrivut.background_normal = ''
+                buttonSkrivut.background_color = [0, 0, 1, 0.5]    # 50% translucent blue
+                buttonSkrivut.focus = True
+
+        Label:
+            id:labelSkrivut
+            size_hint_x: None
+            width: 200
+            text: ' '
+            multiline: False
+
+        Button:
+            id:buttonSkrivut
+            text: 'Ok'
+            focus: False
+            on_press :
+                root.abc()
+                textSerienummer.focus = True
