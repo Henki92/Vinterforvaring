@@ -14,9 +14,13 @@ from tkinter import *
 
 
 def print_function(inputData):
+    path = "\\\\kontoret\\delad_mapp"
     os.system("TASKKILL /F /IM AcroRD32.exe")
     number = 1
-    for file in os.listdir():
+    file_list = check_folder_for_files(path + "\\")  # First check kontoret/delad_mapp to see if we ahve acces to it
+    print(file_list)
+    path = (path + "\\") if len(file_list) else ""  # Else save in local folder
+    for file in os.listdir(path):
         if file.endswith('.pdf'):
             number = int(file[0:3]) + 1
     number = str(number).zfill(3)
@@ -24,13 +28,21 @@ def print_function(inputData):
         number = number + inputData[3].split()[0]
     except IndexError:
         pass
-    update_recipt(number, inputData)
-    os.startfile(number + ".pdf")
+    update_recipt(path, number, inputData)
+    os.startfile(path + number + ".pdf")
 
 
-def update_recipt(number, inputData):
+def check_folder_for_files(path):
+    file_list = []
+    print("Checking for files in: ", path)
+    for file in os.listdir(path):
+        file_list.append(path + "\\" + file)
+    return file_list
+
+
+def update_recipt(path, number, inputData):
     widthA4, heightA4 = A4
-    c = canvas.Canvas(number + ".pdf", pagesize=A4)
+    c = canvas.Canvas(path + number + ".pdf", pagesize=A4)
 
     # Rubrik kvitto
     c.setFont('Helvetica', 20)
